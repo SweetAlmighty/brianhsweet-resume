@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'resume.tex'
+      - '.github/workflows/build.yml'
   workflow_dispatch:
 
 # Only one run at a time so two runs can't rename/upload resume.pdf concurrently.
@@ -27,13 +30,12 @@ jobs:
           root_file: resume.tex
           pre_compile: tlmgr update --self && tlmgr install $(grep -v '^#' latex-packages.txt)
 
-      - name: Upload PDF for downstream jobs
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: resume-built
+          name: resume-pdf
           path: resume.pdf
           if-no-files-found: error
-          retention-days: 1
 
   upload:
     name: Upload to Azure Blob Storage
@@ -43,7 +45,7 @@ jobs:
       - name: Download built PDF
         uses: actions/download-artifact@v4
         with:
-          name: resume-built
+          name: resume-pdf
 
       - name: Archive existing resume.pdf and upload new one
         env:
@@ -83,20 +85,3 @@ jobs:
             --name resume.pdf \
             --file resume.pdf \
             --content-type application/pdf
-
-  artifact:
-    name: Publish PDF artifact
-    runs-on: ubuntu-latest
-    needs: upload
-    steps:
-      - name: Download built PDF
-        uses: actions/download-artifact@v4
-        with:
-          name: resume-built
-
-      - name: Upload downloadable build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: resume-pdf
-          path: resume.pdf
-          if-no-files-found: error
