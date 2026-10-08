@@ -11,8 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # Repository variable (Settings > Secrets and variables > Actions > Variables)
-  AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
+  AZURE_STORAGE_CONTAINER: ${{ secrets.AZURE_STORAGE_CONTAINER }}
 
 jobs:
   build:
@@ -48,7 +47,6 @@ jobs:
 
       - name: Archive existing resume.pdf and upload new one
         env:
-          # Repository secret holding the storage account connection string
           AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
         run: |
           set -euo pipefail
