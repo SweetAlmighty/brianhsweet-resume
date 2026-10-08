@@ -1,0 +1,7 @@
+extsizes
+parskip
+enumitem
+supertabular
+titlesec
+multirow
+fontawesome5
