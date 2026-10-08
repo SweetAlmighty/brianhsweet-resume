@@ -1,0 +1,104 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Only one run at a time so two runs can't rename/upload resume.pdf concurrently.
+concurrency:
+  group: resume-deploy
+  cancel-in-progress: false
+
+env:
+  # Repository variable (Settings > Secrets and variables > Actions > Variables)
+  AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
+
+jobs:
+  build:
+    name: Build PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          pre_compile: tlmgr update --self && tlmgr install $(grep -v '^#' latex-packages.txt)
+
+      - name: Upload PDF for downstream jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-built
+          path: resume.pdf
+          if-no-files-found: error
+          retention-days: 1
+
+  upload:
+    name: Upload to Azure Blob Storage
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download built PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-built
+
+      - name: Archive existing resume.pdf and upload new one
+        env:
+          # Repository secret holding the storage account connection string
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        run: |
+          set -euo pipefail
+          timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
+
+          exists="$(az storage blob exists \
+            --container-name "$AZURE_STORAGE_CONTAINER" \
+            --name resume.pdf \
+            --query exists --output tsv)"
+
+          # Blob storage has no rename, so copy to the new name, then delete the original.
+          if [ "$exists" = "true" ]; then
+            az storage blob copy start \
+              --destination-container "$AZURE_STORAGE_CONTAINER" \
+              --destination-blob "resume_${timestamp}.pdf" \
+              --source-container "$AZURE_STORAGE_CONTAINER" \
+              --source-blob resume.pdf
+            # Same-account copies complete synchronously, but confirm before deleting.
+            status="$(az storage blob show \
+              --container-name "$AZURE_STORAGE_CONTAINER" \
+              --name "resume_${timestamp}.pdf" \
+              --query properties.copy.status --output tsv)"
+            if [ "$status" != "success" ]; then
+              echo "Copy to resume_${timestamp}.pdf not complete (status: $status)" >&2
+              exit 1
+            fi
+            az storage blob delete \
+              --container-name "$AZURE_STORAGE_CONTAINER" \
+              --name resume.pdf
+          fi
+
+          az storage blob upload \
+            --container-name "$AZURE_STORAGE_CONTAINER" \
+            --name resume.pdf \
+            --file resume.pdf \
+            --content-type application/pdf
+
+  artifact:
+    name: Publish PDF artifact
+    runs-on: ubuntu-latest
+    needs: upload
+    steps:
+      - name: Download built PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: resume-built
+
+      - name: Upload downloadable build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: resume.pdf
+          if-no-files-found: error

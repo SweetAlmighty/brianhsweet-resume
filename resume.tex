@@ -1,0 +1,299 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[letterpaper,9pt]{extarticle}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{10pt}
+
+%Setup hyperref package, and colors for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\huge{Brian Hall Sweet} \\ [5pt]
+\raisebox{-0.00\height}\faLinkedin\ \href{https://linkedin.com/in/brian-h-sweet}{\underline{brian-h-sweet}}\ $|$ \
+\raisebox{-0.05\height}\faGlobe\ \href{https://www.brianhsweet.com}{\underline{brianhsweet.com}}\ $|$ \
+\raisebox{-0.05\height}\faEnvelope\ \href{mailto:hello@brianhsweet.com}{\underline{hello@brianhsweet.com}}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Summary}
+Professional Software Engineer with over a decade of experience developing with C\#/.NET and \href{https://unity.com/}{\underline{Unity}}, building quality features and services for applications running on desktop, mobile, web, and mixed reality-based platforms. Experienced Scrum Master with three years of experience helping multifaceted development teams deliver innovative software to meet and exceed the customer's requirements.
+%This CV can also be automatically complied and published using GitHub Actions. For details, %\href{https://github.com/jitinnair1/autoCV}{click here}.
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}} 
+\textbf{Workflows} & Slack, Microsoft Teams, Jira, Confluence, Trello, Microsoft 365 Suite, Google Workspace Suite\\
+\textbf{Languages} & C\#/.NET, C++, Lua, JavaScript, TypeScript, NodeJS, WinForms, NUnit, Jest, HTML/CSS, JSON, XML, SQL\\
+\textbf{Technologies} & Visual Studio, VSCode, JetBrains Rider, Unity, GitHub Copilot, Claude, Git, BitBucket, GitLab, GitHub, CircleCI, TeamCity, XCode, Amazon Web Services, AR/VR, Docker\\ 
+\textbf{Methodologies} & Scrum and Agile Development, Software Development Lifecycle, Software Design Patterns, Unit Testing, Debugging, Source Control, CI/CD, Cross-team collaboration, Mentorship, Servant Leadership\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Software Engineer II --- \href{https://www.webstaurantstore.com/}{\underline{WebstaurantStore}}} & \hfill July 2024 --- Current \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Developed features for \href{https://dotnet.microsoft.com/en-us/apps/aspnet}{\underline{ASP.NET}} (C\#/.NET) internal Human Resources software.
+        \item[--] Created SQL queries and stored procedures to compile data for end users.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Software Engineer --- \href{https://www.virbela.com/}{\underline{Virbela}}} & \hfill July 2023 --- April 2024 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Contributed to \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) code base for proprietary enterprise-level virtual conferencing software.
+        \item[--] Implemented back-end in \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) project that allowed `chatbot' to communicate with service backed by \href{https://openai.com/chatgpt}{\underline{ChatGPT}}.
+        \item[--] Utilized \href{https://github.com/microsoft/Tokenizer}{\underline{Tokenizer}} package in \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) project to optimize data processing for a \href{https://openai.com/chatgpt}{\underline{ChatGPT}}-backed `chatbot'.
+        \item[--] Built a proof-of-concept with \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) using the \href{https://www.4players.io/products/voice-chat/}{\underline{Odin}} voice chat solution, allowing users to communicate with each other.
+        \item[--] Created back-end infrastructure for a \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) WebGL project to correspond with \href{https://www.4players.io/products/voice-chat/}{\underline{Odin}} voice chat server.
+        \item[--] Created front-end controls for a \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) WebGL project using \href{https://unity.com/}{\underline{Unity}}'s \href{https://unity.com/features/ui-toolkit}{\underline{UI Toolkit}}.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Software Developer II \& Scrum Master $|$ Secret Clearance --- \href{https://www.scires.com/}{\underline{Scientific Research Corporation}}} & \hfill Aug 2021 --- July 2023 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Contributed to \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) code base for the NIWC Atlantic CSRR MRTS simulation project.
+        \item[--] Assumed Scrum Master role, facilitated Scrum events for development team, and mentored team on Scrum guidelines.
+        \item[--] Worked directly with product stakeholders to evaluate sprint progress and team necessities.
+        \item[--] Implemented models, animations, and other art assets using \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) for over 20 unique pieces of simulated hardware.
+        \item[--] Collaborated with SMEs and Project Leads over the course of five months to size and schedule work for new phases of the project.
+        \item[--] Created and maintained team-wide procedures for reviewing pull requests for GitLab repositories.
+        \item[--] Designed a process to maintain coding standards across multiple IDEs leveraging \href{https://editorconfig.org/}{\underline{EditorConfig}} files and \href{https://learn.microsoft.com/en-us/visualstudio/code-quality/roslyn-analyzers-overview?view=vs-2022}{\underline{Roslyn Analyzers}}.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Software Developer II \& Scrum Master --- \href{https://www.dopple.io/}{\underline{Dopple}} (formerly \href{https://www.atlatl.com/}{\underline{ATLATL Software}})} & \hfill Jan 2018 --- May 2021 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Contributed to \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) code base for five enterprise-level applications deployed across WebGL and iOS platforms.
+        \item[--] Co-developed new web-based enterprise embeddable application using \href{https://www.babylonjs.com/}{\underline{BabylonJS}} and \href{https://www.typescriptlang.org/}{\underline{TypeScript}}.
+        \item[--] Assumed Scrum Master role, facilitated Scrum events for development team, and mentored team on Scrum guidelines.
+        \item[--] Lead developer for 3D \href{https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)}{\underline{Graph}} feature in \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) project that five enterprise applications were built around.
+        \item[--] Developed features and rule for a patented visual scripting tool based within the \href{https://unity.com/}{\underline{Unity}} Editor using C\#/.NET.
+        \item[--] Collaborated with QA leads to discuss and educate team on regarding upcoming features and formulate best practices for testing.
+        \item[--] Wrote and modified GitLab pipeline scripts using YAML, responsible for building and deploying instances of web-based projects.
+        \item[--] Implemented QR code generation in \href{https://www.typescriptlang.org/}{\underline{TypeScript}} that allowed for users to view the configured product in augmented reality (AR).
+        \item[--] Wrote \href{https://www.terraform.io/}{\underline{Terraform}} scripts that created and deployed Amazon Web Services like EC2, S3, and CloudWatch.
+        \item[--] Designed \href{https://www.javascript.com/}{\underline{JavaScript}} repository using the \href{https://lerna.js.org/}{\underline{Lerna}} build system, containing all supplementary code used during development.
+        \item[--] Helped develop virtual reality (VR) proof-of-concept using \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) for designing a traversable dungeon in first-person.
+        \item[--] Participated in interviews and technical reviews for potential development team hires.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Software Developer I --- \href{https://www.dopple.io/}{\underline{Dopple}} (formerly \href{https://www.atlatl.com/}{\underline{ATLATL Software}})} & \hfill Jan 2017 --- Jan 2018 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Contributed to \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) code bases for eight enterprise-level applications deployed across WebGL and iOS platforms.
+        \item[--] Lead developer on \href{https://youtu.be/ttR8cy_39ss}{\underline{3D deck railing configuration}} application utilizing \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) for WebGL and iOS platforms.
+        \item[--] Coordinated with project managers to implement customer-requested features for three shipped enterprise applications.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Maintenance Engineer --- \href{https://www.dopple.io/}{\underline{Dopple}} (formerly \href{https://www.atlatl.com/}{\underline{ATLATL Software}})} & \hfill Nov 2014 --- Jan 2017 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Contributed to \href{https://unity.com/}{\underline{Unity}} (C\#/.NET) code bases for eight enterprise-level applications deployed across WebGL and iOS platforms.
+        \item[--] Developed feature that allowed users to open our iOS application, sign in, and open their configured product via email hyperlink.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	NOTEWORTHY
+%----------------------------------------------------------------------------------------
+\section{Noteworthy}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Secret Security Clearance --- Active} & \hfill July 2021 \\[3.5pt]
+\textbf{Patent Co-inventor --- \href{https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10650611}{\underline{Systems and Methods for Graphical Programming}}} & \hfill May 2020 \\[3.5pt]
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Certified ScrumMaster® (CSM®) --- \href{https://www.scrumalliance.org/}{\underline{Scrum Alliance, Inc.}}} & \hfill Apr 2021 --- Apr 2025 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] BadgeID:\@  \href{https://bcert.me/bc/html/show-badge.html?b=vyfgegme}{\underline{1374330}}
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Unity Certified Developer --- \href{https://unity.com/}{\underline{Unity Technologies}}} & \hfill Apr 2017 --- Apr 2019 \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Certification ID:\@ \href{https://www.credly.com/badges/2340f16d-edcf-47d8-b8ca-42bd8f99e364/}{\underline{201704UCD1834}}
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Bachelor of Science in Game Development --- \href{https://www.fullsail.edu/}{\underline{Full Sail University}}} & \hfill Sep 2011 --- Oct 2014 \\[3.5pt]
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SELECTED PROJECTS
+%----------------------------------------------------------------------------------------
+\section{Selected Projects}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{brianhsweet.com --- Personal Website} & \hfill \href{https://github.com/SweetAlmighty/brianhsweet}{\underline{Link to Repository}} \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] \href{https://dotnet.microsoft.com/en-us/apps/aspnet}{\underline{ASP.NET}} project written in C\# and \href{https://www.typescriptlang.org/}{\underline{TypeScript}}.
+        \item[--] Utilizes \href{https://github.com/}{\underline{GitHub}} for repository hosting and site deployment.
+        \item[--] Leverages \href{https://azure.microsoft.com/en-us}{\underline{Microsoft Azure}} services for file storage and site hosting.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Blox --- 2D procedural block puzzle game} & \hfill \href{https://brian-sweet.itch.io/blox}{\underline{Link to Demo}} \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Written in \href{https://www.lua.org/}{\underline{Lua}} utilizing the \href{https://love2d.org/}{\underline{LÖVE}} game development framework.
+        \item[--] Implemented a procedural algorithm for generating a near limitless set of unique puzzles.
+        \item[--] Created mobile builds for iOS and Android using \href{https://developer.apple.com/xcode/}{\underline{XCode}} and \href{https://github.com/love2d/love-android}{\underline{love-android}} / \href{https://developer.android.com/studio}{\underline{Android Studio}}, respectively.
+        \item[--] Utilized \href{https://github.com/Davidobot/love.js}{\underline{love.js}} to generate a web-compatible build seen on \href{https://brian-sweet.itch.io/blox}{\underline{itch.io}}.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Attack of the Killer Bunnies --- 3D wave-based top-down shooter} & \hfill \href{https://brian-sweet.itch.io/blox}{\underline{Link to Demo}} \\[3.5pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Developed using the \href{https://www.babylonjs.com/}{\underline{BabylonJS}} game engine and \href{https://www.typescriptlang.org/}{\underline{TypeScript}} over the course of a month.
+        \item[--] Collaborated with a team comprised of four other developers and artists.
+        \item[--] Responsible for main gameplay loop and mini-map functionality.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
