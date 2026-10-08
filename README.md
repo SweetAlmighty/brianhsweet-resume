@@ -1,6 +1,6 @@
 # brianhsweet-resume
 
-[![build](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml/badge.svg)](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/) [![build](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml/badge.svg)](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml)
 
 LaTeX source for my resume. `resume.tex` is the single source file.
 
