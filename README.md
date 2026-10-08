@@ -2,7 +2,7 @@
 
 [![build](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml/badge.svg)](https://github.com/SweetAlmighty/brianhsweet-resume/actions/workflows/build.yml)
 
-LaTeX source for Brian Sweet's resume. `resume.tex` is the single source file.
+LaTeX source for my resume. `resume.tex` is the single source file.
 
 The layout is based on a template by Jitin Nair (MIT License, 2021; see the header of `resume.tex`).
 
